@@ -4,5 +4,6 @@
 #include "Observable.h"
 #include "ObservableWithTime.h"
 #include "Statistics.h"
+#include "Histogram.h"
 
 #endif

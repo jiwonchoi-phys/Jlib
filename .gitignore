@@ -1,4 +1,4 @@
-profdata
+profdata/
 main*
 *.sh
 *.py

@@ -6,8 +6,7 @@
 #include <cstdlib>
 #include <numeric>
 #include <execution>
-
-
+#include <functional>
 #define DEFAULT_OBS_LENGTH (100)
 #define DEFAULT_SIZE_INCREMENT (100)
 

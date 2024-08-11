@@ -5,10 +5,11 @@
 
 namespace Jlib{
 
-	template <class T>
-	class Observable{
+	template <class T1, class T2>
+	class Observable2D{
 		protected:
-			std::vector<T> m_obsList;
+			std::vector<T1> m_obsList1;
+			std::vector<T2> m_obsList2;
 			int m_maxLength;
 			unsigned int m_numElem;
 		
@@ -17,37 +18,17 @@ namespace Jlib{
 			Observable(unsigned int maxLength);
 			virtual ~Observable();
 			inline void set_length(unsigned int maxLength);
-			inline unsigned int get_length() const;
-			inline void append(T val);
+			inline void append(T1 val1, T2 val2);
 			virtual void extend(unsigned int length);
-			inline T getElement(int idx) const;
+			inline std::tuple<T1,T2> getElement(int idx) const;
 
-			const std::vector<T>& get_obs() const;
+			const std::vector<T1,T2>& get_obs() const;
 
 			void print() const;
-
-
-			// Operator overloading
-
-  		friend Observable<T> operator+(const Observable<T>& A, const Observable<T>& B) {
-				if (A.get_length() != B.get_length()) throw std::invalid_argument("Two observables should have same length of vector.");
-				unsigned int newLength = A.get_length();
-				Observable<T> result(newLength);
-				for(unsigned int i = 0; i < newLength; ++i) result.append(A.m_obsList[i] + B.m_obsList[i]);
-				return result;
-  		}
-
-  		friend Observable<T> operator*(const Observable<T>& A, const Observable<T>& B) {
-				if (A.get_length() != B.get_length()) throw std::invalid_argument("Two observables should have same length of vector.");
-				unsigned int newLength = A.get_length();
-				Observable<T> result(newLength);
-				for(unsigned int i = 0; i < newLength; ++i) result.append(A.m_obsList[i] * B.m_obsList[i]);
-				return result;
-  		}
 	
 	};
 
-	template <class T>
+	template <class T1, class T2>
 	Observable<T>::Observable() : m_maxLength(DEFAULT_OBS_LENGTH), m_numElem(0) {
 		m_obsList.reserve(m_maxLength);
 	};
@@ -62,10 +43,6 @@ namespace Jlib{
 
 	template <class T>
 	void Observable<T>::set_length(unsigned int maxLength) { m_maxLength = maxLength; };
-
-	template <class T>
-	unsigned int Observable<T>::get_length() const { return m_numElem; };
-
 
 	template <class T>
 	void Observable<T>::append(T val) {
@@ -90,15 +67,6 @@ namespace Jlib{
 	void Observable<T>::print() const {
 		for (unsigned int i=0;i<m_numElem;++i) std::cout << m_obsList[i] << "\n";
 	};
-
-
-
-
-
-  // Operator overloading for addition
-	
-
-
 
 }
 

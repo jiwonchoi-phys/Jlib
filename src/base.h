@@ -3,10 +3,12 @@
 
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
 #include <numeric>
 #include <execution>
 #include <functional>
+#include <string>
 #define DEFAULT_OBS_LENGTH (100)
 #define DEFAULT_SIZE_INCREMENT (100)
 

@@ -5,5 +5,6 @@
 #include "ObservableWithTime.h"
 #include "Statistics.h"
 #include "Histogram.h"
+#include "FileIO.h"
 
 #endif

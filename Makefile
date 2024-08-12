@@ -1,5 +1,5 @@
 CC = g++-13
-CXXFLAGS = -std=c++17 -Wall -O3 -DPARALLEL -fopenmp
+CXXFLAGS = -std=c++17 -O3 -DPARALLEL -fopenmp
 SRC_DIR = ./src
 OBJ_DIR = ./obj
 TARGET = main

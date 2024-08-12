@@ -17,6 +17,7 @@ namespace Jlib{
 		
 		public:
 			Observable(obsNames obsName);
+			Observable(obsNames obsName, int length);
 			inline void append(std::string name, double val);
 			void append(obsNames names, std::vector<double> vals);
 			// Observable(unsigned int maxLength);
@@ -57,6 +58,17 @@ namespace Jlib{
 	};
 
 	Observable::Observable(obsNames obsName) : m_maxLength(DEFAULT_OBS_LENGTH){
+		// Assign the number of Observables
+		m_numObs = obsName.size();
+		m_obsList.resize(m_numObs);
+		// Make a map for accessing a correct observable list
+		for (int i=0;i<m_numObs;++i){
+			m_obsList[i].reserve(m_maxLength);
+			m_obsMap.insert( std::pair< std::string, int > (obsName[i],i) );
+		}
+	}
+
+	Observable::Observable(obsNames obsName, int length) : m_maxLength(length){
 		// Assign the number of Observables
 		m_numObs = obsName.size();
 		m_obsList.resize(m_numObs);
